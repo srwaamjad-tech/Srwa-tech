@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ckb" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چالاک تێک - دوکانی مۆبایل و کۆمپیوتەر</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .services {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .contact-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: white;
+            color: #667eea;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">چالاک تێک</div>
+            <ul class="nav-links">
+                <li><a href="#home">سەرەتا</a></li>
+                <li><a href="#services">خزمەتگوزارییەکان</a></li>
+                <li><a href="#contact">پەیوەندیکردن</a></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>چالاک تێک</h1>
+                <p>دوکانی پیشەیی بۆ چاککردنەوە و خزمەتگوزارییەکانی مۆبایل و کۆمپیوتەر</p>
+                <a href="#services" class="cta-button pulse">خزمەتگوزارییەکانمان ببینە</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>خزمەتگوزارییەکانمان</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">📱</span>
+                        <h3>چاککردنەوەی مۆبایل</h3>
+                        <p>چاککردنەوەی ھەموو جۆرەکانی کێشەی مۆبایل بە شێوەیەکی پیشەیی و بە گەرەنتی</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">💻</span>
+                        <h3>چاککردنەوەی کۆمپیوتەر</h3>
+                        <p>چاککردنەوەی کێشەکانی کۆمپیوتەر و لاپتۆپ بە تەکنیکی پێشکەوتوو</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📶</span>
+                        <h3>فرۆشتنی سیمکارت</h3>
+                        <p>فرۆشتنی سیمکارتی ھەموو کۆمپانیاکان بە نرخی گونجاو</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📘</span>
+                        <h3>سپۆنسەری فەیسبووک</h3>
+                        <p>خزمەتگوزاریی سپۆنسەری فەیسبووک بۆ بازرگانیەکانتان</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🎵</span>
+                        <h3>سپۆنسەری تیکتۆک</h3>
+                        <p>سپۆنسەری تیکتۆک بۆ گەشەپێدانی بیزنەسەکەتان</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">💳</span>
+                        <h3>ئاڵوگۆڕی پارەی بانکی</h3>
+                        <p>ئاڵوگۆڕی پارە بە نرخی باش و بە ئاسانترین شێوە</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-info">
+            <div class="container">
+                <h2>پەیوەندیمان پێوە بکە</h2>
+                <p>ئامادەین ھەموو کاتێک خزمەتتان بکەین</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <h3>📍 ناونیشان</h3>
+                        <p>سلێمانی - کانی سپیکە<br>خوار ھەرزانبازاڕی مەلیکە</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 تەلەفۆن</h3>
+                        <p style="font-size: 1.2rem; font-weight: bold;">٠٧٧١٤٦٤٢٢٥٩</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕐 کاتی کارکردن</h3>
+                        <p>ھەموو ڕۆژێک<br>٨ بەیانی تا ١٢ نیوەڕۆ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; ٢٠٢٥ چالاک تێک - ھەموو مافەکان پارێزراون</p>
+            <p>دروستکراوە بە خۆشەویستی بۆ پێشکەوتنی تەکنەلۆژیا لە کوردستان</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offsetTop = target.offsetTop - 80;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add click to call functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneNumber = document.querySelector('.contact-item p[style*="font-size"]');
+            if (phoneNumber) {
+                phoneNumber.style.cursor = 'pointer';
+                phoneNumber.onclick = function() {
+                    window.location.href = 'tel:+9647714642259';
+                };
+                phoneNumber.title = 'کلیک بکە بۆ پەیوەندیکردن';
+            }
+        });
+    </script>
+</body>
+</html>
